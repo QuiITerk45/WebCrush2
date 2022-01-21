@@ -12,6 +12,12 @@
   />
 </head>
 <body id="page2">
+
+	<div class="overlay">
+		<button id="btn">Sẵn Sàng</button>
+	</div>
+
+
    <div class="container2 animate__animated animate__backInUp">
        <div class="time-reverse">
 		   <audio id="demnguoc">
@@ -32,7 +38,7 @@
                <h3>"Chúc cậu năm mới vui vẻ, luôn tươi vui và gặp nhiều may mắn trong cuộc sống !"</h3>
                 <p>
                     <em>
-                        <pre> -- Anh Bằng -- </pre>
+                        <pre> -- Bằng -- </pre>
                     </em>
                   </p>
            </div>
@@ -42,41 +48,63 @@
    <div class="containernew">
 
    </div>
+   <a href="./page3.html">nhan vao</a>
 
    <script>
        const getTime  = document.querySelector('#time')
        const getMess = document.querySelector('.mess')
        const container2 = document.querySelector('.container2')
        const containernew = document.querySelector('.containernew')
-       const demnguoc = document.querySelector('#demnguoc')
+       const demnguocne = document.querySelector('#demnguoc')
 		const amthanhhappy = document.querySelector('#phaohoanhac')
 
-       let time = 3;
-       let TimeStop = setInterval(()=>{
-		   demnguoc.play()
-           getTime.innerText = time;
-           time--;
-           if(time==-1){
-               clearInterval(TimeStop)
-                getTime.innerText =''
-                loop()
-           }
-       },1000)
-	   
-	   setTimeout(()=>{
+	const btn = document.querySelector('#btn');
+
+	btn.onclick = ()=>{
+		setTimeout(()=>{
+			demnguocne.play()
+		},1000)
+		demnguoc()
+		document.querySelector('.overlay').style.display='none'
+		setTimeout(()=>{
 		   amthanhhappy.play()
 	   },5000)
-     
-       setTimeout(()=>{
+	}
+
+
+	function demnguoc(){
+		let time = 3;
+	
+		let TimeStop = setInterval(()=>{
+	 //    demnguoc.play()
+		getTime.innerText = time;
+		time--;
+		if(time==-1){
+			clearInterval(TimeStop)
+			 getTime.innerText =''
+			 loop()
+		}
+	},1000)
+
+	  
+	setTimeout(()=>{
             getMess.style.display = 'block'
             getMess.classList.add('hieuung')
        },7000)
+
 
        setTimeout(()=>{
             getMess.style.display='none'
             container2.style.display='none'
             containernew.style.display='block'
        },25000)
+	   
+	}
+     
+	   
+	 
+   
+
 
 
        //Hiệu ứng Pháo hoa 

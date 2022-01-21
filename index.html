@@ -17,7 +17,7 @@
         <div class="box-question animate__animated animate__lightSpeedInRight">
             <h4>Cậu nhập tên cậu vào xem có gì không nè ? 😉</h4>
            <em><p>Nhập sai là không chạy đâu đó !</p></em> 
-           <input type="text" placeholder="Nhập tên cậu vào đây này ..." id="inputname" onkeyup="checkInput(this)">
+           <input type="text" placeholder="Nhập tên cậu vào đây này ..." id="inputname">
            <input type="button" value="Xác nhận" id="xacnhan">
         </div>
         <!-- <div class="answer-boy animate__animated  animate__lightSpeedInRight">
@@ -30,21 +30,22 @@
         </div> -->
     </div>
     <div class="container-1">
-        <p>Hihi biết chắc là <strong><em>Nhi</em> </strong> rồi đó !</p>
+        <p>Hehe biết chắc là <strong><em>Nhi</em> </strong> rồi đó !</p>
         <p>Tớ có món quá muốn tặng cậu này ...</p>
         <br>
-        <button id="nhanqua">Nhận quà 🎁</button>
         <div class="img-box">
             <img src="./assets/img/sticker.jpg" alt="">
         </div>
+        <button id="nhanqua">Nhận quà 🎁</button>
     </div>
     <audio id="nhacnen">
         <source src="./assets/music/page1.mp3" type="" >
     </audio>   
+
     <script>
         const $ = document.querySelector.bind(document)
         const $$ = document.querySelectorAll.bind(document)
-
+     
         const girlTalk = $('#girl-talk')
         const inputName = $('#inputname')
         const xacnhan = $('#xacnhan')
@@ -52,13 +53,11 @@
 
         const getContainer1 = $('.container1')
         const getContainerand1 = $('.container-1')
-        const nhanqua  = $('#nhanqua')
-        function checkInput(e){
-            musick.play()
-           girlTalk.innerText = e.value;
-        }
 
-   
+        inputName.onfocus = ()=>{
+            document.querySelector('#nhacnen').play()
+        }
+       
 
        xacnhan.onclick =()=>{   
            let NameAfter = inputName.value
