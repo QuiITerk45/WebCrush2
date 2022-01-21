@@ -18,7 +18,7 @@
 	</div>
 
 
-   <div class="container2 animate__animated animate__backInUp">
+   <div class="container2 animate__animated animate__fadeInRight">
        <div class="time-reverse">
 		   <audio id="demnguoc">
 			   <source src="./assets/music/3s.mp3" type="">
@@ -26,7 +26,7 @@
            <h1  id="time">3</h1>
        </div>
        <div class="phaohoa">
-		   <audio id="phaohoanhac">
+		   <audio id="phaohoanhac" loop>
 			   <source src="./assets/music/HappyNewYearRemix-DJ_ubze (1).mp3" type="">
 		   </audio>
         <canvas id="canvas">Canvas is not supported in your browser.</canvas>
@@ -44,19 +44,42 @@
            </div>
        </div>
    </div>
-
-   <div class="containernew">
-
-   </div>
-   <a href="./page3.html">nhan vao</a>
+   
 
    <script>
+
+
        const getTime  = document.querySelector('#time')
        const getMess = document.querySelector('.mess')
        const container2 = document.querySelector('.container2')
-       const containernew = document.querySelector('.containernew')
        const demnguocne = document.querySelector('#demnguoc')
-		const amthanhhappy = document.querySelector('#phaohoanhac')
+	   const amthanhhappy = document.querySelector('#phaohoanhac')
+
+
+
+	   function showimg(){
+		let arrImg = ['./assets/img/bautroisao.jpg','https://i.pinimg.com/564x/19/14/49/191449c7a5cab60c23abe5eaabeddedc.jpg',
+		'https://i.pinimg.com/564x/ed/94/8c/ed948c65506bb40e226bd0afb271a5d8.jpg',
+		'https://i.pinimg.com/564x/3c/21/f7/3c21f7f8c6f8174bb5d459a46b50f1f7.jpg'
+		]
+
+
+
+	let index = 0;
+	function changeImg(){
+		if(index === 4){
+			index = 0;
+		}
+		container2.style.backgroundImage = `url('${arrImg[index]}')`
+		index++;
+	}
+	
+	setInterval(changeImg,2000)
+
+	   }
+	
+
+
 
 	const btn = document.querySelector('#btn');
 
@@ -69,6 +92,7 @@
 		setTimeout(()=>{
 		   amthanhhappy.play()
 	   },5000)
+	   showimg()
 	}
 
 
@@ -93,11 +117,7 @@
        },7000)
 
 
-       setTimeout(()=>{
-            getMess.style.display='none'
-            container2.style.display='none'
-            containernew.style.display='block'
-       },25000)
+   
 	   
 	}
      
@@ -183,7 +203,7 @@ function Firework( sx, sy, tx, ty ) {
 		this.coordinates.push( [ this.x, this.y ] );
 	}
 	this.angle = Math.atan2( ty - sy, tx - sx );
-	this.speed = 40;
+	this.speed = 1000;
 	this.acceleration = 1.05;
 	this.brightness = random( 50, 70 );
 	// circle target indicator radius
@@ -298,7 +318,7 @@ Particle.prototype.draw = function() {
 // create particle group/explosion
 function createParticles( x, y ) {
 	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-	var particleCount =500;
+	var particleCount =600;
 	while( particleCount-- ) {
 		particles.push( new Particle( x, y ) );
 	}
